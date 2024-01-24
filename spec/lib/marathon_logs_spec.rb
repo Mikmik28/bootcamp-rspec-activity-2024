@@ -48,17 +48,18 @@ describe MarathonLogs do
       end
     end
   end
+
   # 3. describe "#count_logs"
-  # describe "total_duration" do
-  #   context "checking total duration of logs" do
-  #     before do
-  #       4.times do
-  #         subject.create_log(duration: rand(10), distance: rand(8))
-  #       end
-  #     end
-  #     it "check the total_duration" do
-  #       expect(subject.total_duration).to eq subject.logs.reduce(0) { |total, log| total + log }
-  #     end
-  #   end
-  # end
+  describe "total_duration" do
+    context "checking total duration of logs" do
+      before do
+        4.times do
+          subject.create_log(duration: rand(10), distance: rand(8))
+        end
+      end
+      it "check the total_duration" do
+        expect(subject.total_duration).to eq subject.logs.reduce(0) { |total, log| total + log[:duration] }
+      end
+    end
+  end
 end
